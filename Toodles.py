@@ -2,19 +2,20 @@ import os
 import keyword
 import sys
 
-def walkAndList():
-	for dirname, dirnames, filenames in os.walk('.'):
+def walkAndList(directory):
+	for dirname, dirnames, filenames in os.walk(directory):
+
 	    # print path to all filenames.
 	    for filename in filenames:
 	        workingFilename = os.path.join(dirname, filename)
-            if(isSourceFile(workingFilename)):
-		        listOccurrencesOfToDoInFile(workingFilename)
+            if(isSourceFile(filename)):
+		        listOccurrencesOfToDoInFile(filename)
 
 	    # Advanced usage:
 	    # editing the 'dirnames' list will stop os.walk() from recursing into there.
 	    if '.git' in dirnames:
 	        # don't go into any .git directories.
-	        dirnames.remove('.git')
+	        dirnames.remove('.git')            
 	
 # 	Find occurences of "todo" and "fixme" in a file
 #	If we find such an occurence, print the filename, 
@@ -36,4 +37,4 @@ def isSourceFile(name):
 		return True
 	return False
 	
-walkAndList()
+walkAndList(".")
