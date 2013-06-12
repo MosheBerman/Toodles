@@ -35,7 +35,7 @@ class Toodles:
 			currentLine = currentLine + 1
 			needle = "todo"
 			if (needle in line):
-				sys.stdout.write(aFileName + " (" + str(currentLine) + ")" + line)
+				print(aFileName + " (" + str(currentLine) + ")" + line)
 			
 	#Todo: add a comment
 	def isSourceFile(self, name):
